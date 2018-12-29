@@ -2,11 +2,13 @@
 var express = require('express'),
 	app     = express(),
 	mongoose = require('mongoose'),
+	bodyParser = require('body-parser'),
 	moment = require('moment');
 
 // Setting up the basic configuration.
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // *Database setting*
 // =============================================================
@@ -54,6 +56,7 @@ app.get("/blogs/new", function(req, res) {
 
 // Create route
 app.post("/blogs", function(req, res) {
+	console.log(req.body);
 	var newBlog = {
 		title: req.body.title, 
 		image: req.body.image,
@@ -108,8 +111,12 @@ app.put("/blogs/:id", function(req, res) {
 // Delete route
 app.delete("/blogs/:id", function(req, res) {
 	Blog.findByIdAndRemove(req.params.id, function(err) {
-		console.log("Delete Unsuccessful");
-		console.log(err);
+		if(err) {
+			console.log("Delete Unsuccessful");
+			console.log(err);
+		} else {
+			res.redirect("/blogs");
+		}
 	});
 });
 
