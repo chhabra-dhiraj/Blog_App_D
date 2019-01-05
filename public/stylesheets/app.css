@@ -1,0 +1,59 @@
+body {
+    line-height: 3em;
+}
+
+#navbar_menu {
+    background: black;
+}
+
+#blogs_view {
+    margin-top: 100px;
+}
+
+.ui.container.show-page {
+    width: 723px;
+    margin: 0 350px;
+}
+
+#title {
+    font-size: xx-large;
+    color: black;
+    padding: 0.7em 0;
+}
+
+#title:hover {
+    color: darkgrey;
+}
+
+#body {
+    box-sizing: border-box;
+}
+
+.ui.items>.item .avatar img, .ui.items>.item img.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 500rem;
+}
+
+#intro {
+    vertical-align: center;
+}
+
+#single_main {
+    margin: 2em 0;
+}
+
+#single_con {
+    width: 735px;
+    margin: 2em 0;
+    font-family: 'Playfair Display', serif;
+    line-height: 30px;
+}
+
+.ui.card {
+    margin: 2em auto;
+}
+
+.ui.card, .ui.cards > .card {
+    width: 80%;
+}

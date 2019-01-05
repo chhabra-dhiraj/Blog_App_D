@@ -1,10 +1,23 @@
 <% include ./layouts/header.ejs %>
 
-<form action="/blogs/<%= singleBlog._id %>?_method=PUT" method="POST">
-    <input type="text" name="title" placeholder="Give the title to the blog" value="<%= singleBlog.title %>"></input>
-    <input type="text" name="image" placeholder="Image url" value="<%= singleBlog.image %>"></input>
-    <input type="text" name="body" placeholder="Enter description" value="<%= singleBlog.body %>"></input>
-    <input type="submit"></input>
-</form>
+<div class="ui container">
+    <form id="blogs_view" class="ui form" action="/blogs/<%= singleBlog._id %>?_method=PUT" method="POST">
+        <div class="field">
+            <label>Blog's Title</label>
+            <input type="text" name="title" placeholder="Enter your blog's title here" value="<%= singleBlog.title %>">
+        </div>
+        <div class="field">
+            <label>Image</label>
+            <textarea name="image" rows="2"
+                      placeholder="Enter the url of your blog's title image here"><%= singleBlog.image %></textarea>
+        </div>
+        <div class=" field">
+            <label>Content</label>
+            <textarea name="body"
+                      placeholder="Enter your blog content here"><%= singleBlog.body %></textarea>
+        </div>
+        <button class="ui button" type="submit">Done</button>
+    </form>
+</div>
 
 <% include ./layouts/footer.ejs %>
