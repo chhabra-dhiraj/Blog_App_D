@@ -1,0 +1,12 @@
+<% include ./layouts/header.ejs %>
+
+<h1><%= singleBlog.title %></h1>
+<img src="<%= singleBlog.image %>">
+<div><%= singleBlog.dateCreated %></div>
+<div><%= singleBlog.body %></div>
+<button><a href="/blogs/<%= singleBlog._id %>/edit">Edit</a></button>
+<form action="/blogs/<%= singleBlog._id %>?_method=DELETE" method="POST">
+    <button>Delete</button>
+</form>
+
+<% include ./layouts/footer.ejs %>

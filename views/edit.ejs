@@ -1,0 +1,10 @@
+<% include ./layouts/header.ejs %>
+
+<form action="/blogs/<%= singleBlog._id %>?_method=PUT" method="POST">
+    <input type="text" name="title" placeholder="Give the title to the blog" value="<%= singleBlog.title %>"></input>
+    <input type="text" name="image" placeholder="Image url" value="<%= singleBlog.image %>"></input>
+    <input type="text" name="body" placeholder="Enter description" value="<%= singleBlog.body %>"></input>
+    <input type="submit"></input>
+</form>
+
+<% include ./layouts/footer.ejs %>

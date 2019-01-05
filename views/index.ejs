@@ -3,12 +3,12 @@
 <button><a href="/blogs/new">Add new blog</a></button>
 
 <% blogs.forEach(function(blog) { %>
-	<h1><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></h1>
-	<div>
-		<img src="<%= blog.image %>">
-		<span><%= blog.dateCreated %></span>
-	</div>
-	<div><%= blog.body.substring(0, 100) %></div>
+    <h1><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></h1>
+    <div>
+        <img src="<%= blog.image %>">
+        <span><%= blog.dateCreated %></span>
+    </div>
+    <div><%= blog.body.substring(0, 100) %></div>
+    <button><a href="/blogs/<%= blog._id %>">Read More</a></button>
 <% }); %>
-
 <% include layouts/footer %>

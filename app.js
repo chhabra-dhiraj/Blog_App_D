@@ -3,12 +3,14 @@ var express = require('express'),
 	app     = express(),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
+	methodOverride = require('method-override'),
 	moment = require('moment');
 
 // Setting up the basic configuration.
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 
 // *Database setting*
 // =============================================================
@@ -17,15 +19,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 mongoose.connect('mongodb://localhost/Blog_App_D_Database', {useNewUrlParser: true});
 
 // Data scheme defining
-var blogScheme = {
+var blogSchema = new mongoose.Schema({
 	title: String,
 	image: String,
 	body: String,
 	dateCreated: {type: String, default: moment().format()}
-};
+});
 
 // Modelling the  blogScheme
-var Blog = mongoose.model('Blog', blogScheme);
+var Blog = mongoose.model('Blog', blogSchema);
 
 // =============================================================
 
@@ -87,7 +89,13 @@ app.get("/blogs/:id", function(req, res) {
 
 // Edit route
 app.get("/blogs/:id/edit", function(req, res) {
-	res.render("edit");
+	Blog.findById(req.params.id, function(err, blog) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render("edit", {singleBlog: blog});
+		}
+	});
 });
 
 // Update route
@@ -103,7 +111,7 @@ app.put("/blogs/:id", function(req, res) {
 			console.log(err);
 		} else {
 			console.log(blog);
-			res.redirect("/blogs");
+			res.redirect("/blogs/" + req.params.id);
 		}
 	});
 });
