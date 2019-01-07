@@ -1,0 +1,21 @@
+<% include layouts/header %>
+
+<div class="ui container">
+    <form id="blogs_view" class="ui form" action="/api/blogs" method="POST">
+        <div class="field">
+            <label>Blog's Title</label>
+            <input type="text" name="title" placeholder="Enter your blog's title here">
+        </div>
+        <div class="field">
+            <label>Image</label>
+            <textarea name="image" rows="2" placeholder="Enter the url of your blog's title image here"></textarea>
+        </div>
+        <div class="field">
+            <label>Content</label>
+            <textarea name="body" placeholder="Enter your blog content here"></textarea>
+        </div>
+        <button class="ui button" type="submit">Post</button>
+    </form>
+</div>
+
+<% include layouts/footer %>
