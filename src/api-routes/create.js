@@ -26,6 +26,8 @@ router.post("/", function (req, res) {
         }
     });
 
+    res.send({err: 0, redirectUrl: "/blogs"});
+
 });
 
 module.exports = router;
