@@ -1,0 +1,76 @@
+const express = require('express'),
+    router = express.Router(),
+    bodyParser = require('body-parser'),
+    sanitizer = require('sanitizer');
+
+const {createBlog, readBlogs, readBlogById, updateBlog, deleteBlog} = require('../../controllers/blogs');
+
+router.use(bodyParser.urlencoded({extended: true}));
+
+// Read api route
+router.get("/", async function (req, res) {
+    try {
+        const blogs = await readBlogs();
+        res.status(200).json(blogs);
+    } catch (e) {
+        throw e;
+    }
+
+});
+
+// Create api route
+router.post("/", async function (req, res) {
+    const newBlog = {
+        title: requestbody.title,
+        image: requestbody.image,
+        body: sanitizer.sanitize(requestbody.body)
+    };
+
+    try {
+        const blog = await createBlog(newBlog);
+        res.send(blog);
+    } catch (e) {
+        throw e;
+    }
+
+});
+
+// Show api route
+router.get("/:id", async function (req, res) {
+    try {
+        const blog = await readBlogById(req.params.id);
+        res.status(200).json(blog);
+    } catch (e) {
+        throw e;
+    }
+
+})
+
+// Update api route
+router.put("/:id", async function (req, res) {
+    const newBlog = {
+        title: req.body.title,
+        image: req.body.image,
+        body: sanitizer.sanitize(req.body.body)
+    };
+
+    try {
+        const blog = await updateBlog(req.params.id, newBlog);
+        res.send(blog);
+    } catch (e) {
+        throw e;
+    }
+
+});
+
+// Delete api route
+router.delete("/:id", async function (req, res) {
+    try {
+        const blog = await deleteBlog(req.params.id);
+        res.send(blog);
+    } catch (e) {
+        throw e;
+    }
+});
+
+module.exports = router;

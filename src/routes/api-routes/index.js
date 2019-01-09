@@ -1,9 +1,7 @@
 const express = require('express'),
     router = express.Router();
 
-// New route
-router.get("/new", function (req, res) {
-    res.render("new");
-});
+// Setting up the api routes (RESTfull routes)
+router.use("/api/blogs", require('./blogs'));
 
 module.exports = router;
