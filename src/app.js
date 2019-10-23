@@ -10,18 +10,21 @@ const express = require('express'),
 
 // Setting up the basic configuration.
 app.set('view engine', 'ejs');
-app.use('/', express.static(path.join(__dirname, '../public')))
-app.set('views', path.join(__dirname, '../views'))
+app.use('/', express.static(path.join(__dirname, '../public')));
+app.set('views', path.join(__dirname, '../views'));
 app.use(bodyParser.json({extended: true}));
 app.use(methodOverride("_method"));
 
 // Database Creation
 mongoose.connect('mongodb://localhost/Blog_App_D_Database', {useNewUrlParser: true});
 
+require('./models/users');
+require('./config/passport');
+
 // api routes
 app.use(require('./routes/api-routes/index.js'));
 
-// app routes
+// page routes
 app.use(require('./routes/page-routes/index.js'));
 
 // Setting up the server (Making the server to listen to requests and respong accordingly).
