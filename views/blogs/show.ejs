@@ -1,39 +1,42 @@
-<% include ../layouts/header.ejs %>
+<%- include ("../layouts/header.ejs") %>
 
-<div id="blogs_view" class="ui container show-page">
-    <div class="ui items">
-        <h1 class="ui header"><%= singleBlog.title %></h1>
-        <div id="intro" class="item">
-            <img class="ui avatar image"
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOAWtdUwNKHvS0DdrmJNBKkojjqA-Dz6i126BmMUbd4SzE2B59">
-            <div class="content">
-                <div class='right floated'>
-                    <div class='ui pointing dropdown top right'>
-                        <i class="ellipsis horizontal icon"></i>
-                        <div class='menu'>
-                            <a class='item' href="/blogs/<%= singleBlog._id %>/edit">
-                                <i class="pencil alternate icon"></i>
-                                Edit
-                            </a>
-                            <div id="delete_button" class='item'>
-                                <i class="trash alternate outline icon"></i>
-                                Delete
+    <div id="blogs_view" class="ui container show-page">
+        <div class="ui items">
+            <h1 class="ui header">
+                <%= singleBlog.title %>
+            </h1>
+            <div id="intro" class="item">
+                <img class="ui avatar image"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOAWtdUwNKHvS0DdrmJNBKkojjqA-Dz6i126BmMUbd4SzE2B59">
+                <div class="content">
+                    <div class='right floated'>
+                        <div class='ui pointing dropdown top right'>
+                            <i class="ellipsis horizontal icon"></i>
+                            <div class='menu'>
+                                <a class='item' href="/blogs/<%= singleBlog._id %>/edit">
+                                    <i class="pencil alternate icon"></i>
+                                    Edit
+                                </a>
+                                <div id="delete_button" class='item'>
+                                    <i class="trash alternate outline icon"></i>
+                                    Delete
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="meta">
-                    <p>Dhiraj Chhabra</p>
-                    <p class="time">Created on: <%= singleBlog.dateCreated %></p>
+                    <div class="meta">
+                        <p>Dhiraj Chhabra</p>
+                        <p class="time">Created on: <%= singleBlog.dateCreated %>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
+        <form id="delete_blog_form" action="/blogs/<%= singleBlog._id %>?_method=DELETE" method="POST"></form>
+        <div id="single_main">
+            <img class="ui huge rounded image" src="<%= singleBlog.image %>">
+            <div id="single_con"><%- singleBlog.body %></div>
+        </div>
     </div>
-    <form id="delete_blog_form" action="/blogs/<%= singleBlog._id %>?_method=DELETE" method="POST"></form>
-    <div id="single_main">
-        <img class="ui huge rounded image" src="<%= singleBlog.image %>">
-        <div id="single_con"><%- singleBlog.body %></div>
-    </div>
-</div>
 
-<% include ../layouts/footer.ejs %>
+    <%- include ("../layouts/footer.ejs") %>
