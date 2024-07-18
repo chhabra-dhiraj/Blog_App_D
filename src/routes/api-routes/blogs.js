@@ -1,11 +1,12 @@
 const express = require('express'),
     router = express.Router(),
     bodyParser = require('body-parser'),
-    sanitizer = require('sanitizer');
+    sanitizer = require('sanitizer'),
+    routerHelpers = require('../helpers/router_helpers');
 
-const {createBlog, readBlogs, readBlogById, updateBlog, deleteBlog} = require('../../controllers/blogs');
+const { createBlog, readBlogs, readBlogById, updateBlog, deleteBlog } = require('../../controllers/blogs');
 
-router.use(bodyParser.urlencoded({extended: true}));
+router.use(bodyParser.urlencoded({ extended: true }));
 
 // Read api route
 router.get("/", async function (req, res) {
@@ -20,19 +21,23 @@ router.get("/", async function (req, res) {
 
 // Create api route
 router.post("/", async function (req, res) {
+    let error = routerHelpers.getError(req.body.title, req.body.image, req.body.body)
     const newBlog = {
-        title: requestbody.title,
-        image: requestbody.image,
-        body: sanitizer.sanitize(requestbody.body)
-    };
-
-    try {
-        const blog = await createBlog(newBlog);
-        res.send(blog);
-    } catch (e) {
-        throw e;
+        title: req.body.title,
+        image: req.body.image,
+        body: sanitizer.sanitize(req.body.body)
     }
 
+    if (!error) {
+        try {
+            const blog = await createBlog(newBlog);
+            res.status(200).send({ blog: blog });
+        } catch (e) {
+            throw e;
+        }
+    } else {
+        res.status(400).send({ error: error });
+    }
 });
 
 // Show api route

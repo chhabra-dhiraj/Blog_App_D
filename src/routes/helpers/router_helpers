@@ -1,0 +1,27 @@
+function getError(title, image, body) {
+    let error
+    if (!title || !image || !body) {
+        error = { header: 'Incomplete fields!', message: 'Please fill all the fields to continue.' }
+    } else if (!validImageURL(image)) {
+        error = { header: 'Invalid Image URL', message: 'Please enter a valid image url to continue.' }
+    } else {
+        undefined
+    }
+
+    return error;
+}
+
+function validImageURL(str) {
+    let pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+
+    let arr = ["jpeg", "jpg", "gif", "png"];
+    let ext = str.substring(str.lastIndexOf(".") + 1);
+    return !!pattern.test(str) && arr.includes(ext);
+}
+
+module.exports = { getError, validImageURL }

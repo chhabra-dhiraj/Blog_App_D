@@ -14,6 +14,14 @@ a {
     margin-top: 100px;
 }
 
+#new_blog_form {
+    margin-top: 100px;
+}
+
+#new_blog_error {
+    visibility: hidden;
+}
+
 .ui.container.show-page {
     width: 723px;
     margin: 0 350px;
@@ -33,7 +41,8 @@ a {
     box-sizing: border-box;
 }
 
-.ui.items>.item .avatar img, .ui.items>.item img.avatar {
+.ui.items>.item .avatar img,
+.ui.items>.item img.avatar {
     width: 60px;
     height: 60px;
     border-radius: 500rem;
@@ -58,6 +67,7 @@ a {
     margin: 2em auto;
 }
 
-.ui.card, .ui.cards > .card {
+.ui.card,
+.ui.cards>.card {
     width: 80%;
 }

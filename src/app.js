@@ -12,11 +12,11 @@ const express = require('express'),
 app.set('view engine', 'ejs');
 app.use('/', express.static(path.join(__dirname, '../public')));
 app.set('views', path.join(__dirname, '../views'));
-app.use(bodyParser.json({extended: true}));
+app.use(bodyParser.json({ extended: true }));
 app.use(methodOverride("_method"));
 
 // Database Creation
-mongoose.connect('mongodb://localhost/Blog_App_D_Database', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/Blog_App_D_Database', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 require('./models/users');
 require('./config/passport');
@@ -27,7 +27,7 @@ app.use(require('./routes/api-routes/index.js'));
 // page routes
 app.use(require('./routes/page-routes/index.js'));
 
-// Setting up the server (Making the server to listen to requests and respong accordingly).
+// Setting up the server (Making the server to listen to requests and respond accordingly).
 app.listen("3000", function () {
     console.log("SERVER HAS STARTED");
 });
