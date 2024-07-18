@@ -1,25 +1,26 @@
 <%- include ("../layouts/header") %>
-
-    <div class="ui container">
-        <form id="new_blog_form" class="ui form">
-            <div class="field">
-                <label>Blog's Title</label>
-                <input id="new_blog_title" type="text" name="title" placeholder="Enter your blog's title here">
+    <div id="blogs_view" class="ui container show-page">
+        <div class="ui container">
+            <div id="new_blog_error" class="ui error message">
+                <div id="new_blog_error_header" class="header"></div>
+                <p id="new_blog_error_message"></p>
             </div>
-            <div class="field">
-                <label>Image</label>
-                <textarea id="new_blog_image" name="image" rows="2"
-                    placeholder="Enter the url of your blog's title image here"></textarea>
-            </div>
-            <div class="field">
-                <label>Content</label>
-                <textarea id="new_blog_body" name="body" placeholder="Enter your blog content here"></textarea>
-            </div>
-            <button id="new_blog_submit" class="ui button" type="submit">Post</button>
-        </form>
-        <div id="new_blog_error" class="ui error message" >
-            <div id="new_blog_error_header" class="header"></div>
-            <p id="new_blog_error_message"></p>
+            <form id="new_blog_form" class="ui form">
+                <div class="field">
+                    <label>Blog's Title</label>
+                    <input id="new_blog_title" type="text" name="title" placeholder="Enter your blog's title here">
+                </div>
+                <div class="field">
+                    <label>Image</label>
+                    <textarea id="new_blog_image" name="image" rows="2"
+                        placeholder="Enter the url of your blog's title image here"></textarea>
+                </div>
+                <div class="field">
+                    <label>Content</label>
+                    <textarea id="new_blog_body" name="body" placeholder="Enter your blog content here"></textarea>
+                </div>
+                <button id="new_blog_submit" class="ui button" type="submit">Post</button>
+            </form>
         </div>
     </div>
 

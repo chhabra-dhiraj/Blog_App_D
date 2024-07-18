@@ -33,7 +33,7 @@ router.post("/", async function (req, res) {
             const blog = await createBlog(newBlog);
             res.status(200).send({ blog: blog });
         } catch (e) {
-            throw e;
+            res.status(400).send({ error: { header: 'Creation Failed!', message: 'Please try again after sometime.' } });
         }
     } else {
         res.status(400).send({ error: error });
@@ -65,7 +65,7 @@ router.put("/:id", async function (req, res) {
             const blog = await updateBlog(req.params.id, newBlog);
             res.status(200).send({ blog: blog });
         } catch (e) {
-            throw e;
+            res.status(400).send({ error: { header: 'Edit Failed!', message: 'Please try again after sometime.' } });
         }
     } else {
         res.status(400).send({ error: error });
@@ -76,9 +76,9 @@ router.put("/:id", async function (req, res) {
 router.delete("/:id", async function (req, res) {
     try {
         const blog = await deleteBlog(req.params.id);
-        res.send(blog);
+        res.status(200).send(blog);
     } catch (e) {
-        throw e;
+        res.status(400).send({ error: { header: 'Deletion Failed!', message: 'Please try again after sometime.' } });
     }
 });
 

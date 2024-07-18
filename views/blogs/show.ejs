@@ -1,6 +1,13 @@
 <%- include ("../layouts/header.ejs") %>
 
+    <script>
+        var blogId = '<%= singleBlog._id %>';           
+    </script>
     <div id="blogs_view" class="ui container show-page">
+        <div id="delete_blog_error" class="ui error message">
+            <div id="delete_blog_error_header" class="header"></div>
+            <p id="delete_blog_error_message"></p>
+        </div>
         <div class="ui items">
             <h1 class="ui header">
                 <%= singleBlog.title %>
@@ -32,7 +39,6 @@
                 </div>
             </div>
         </div>
-        <form id="delete_blog_form" action="/blogs/<%= singleBlog._id %>?_method=DELETE" method="POST"></form>
         <div id="single_main">
             <img class="ui huge rounded image" src="<%= singleBlog.image %>">
             <div id="single_con"><%- singleBlog.body %></div>

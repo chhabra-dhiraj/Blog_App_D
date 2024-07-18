@@ -2,27 +2,30 @@
     <script>
         var blogId = '<%= singleBlog._id %>';           
     </script>
-    <div class="ui container">
-        <form id="edit_blog_form" class="ui form">
-            <div class="field">
-                <label>Blog's Title</label>
-                <input type="text" name="title" placeholder="Enter your blog's title here"
-                    value="<%= singleBlog.title %>">
+    <div id="blogs_view" class="ui container show-page">
+        <div class="ui container">
+            <div id="edit_blog_error" class="ui error message">
+                <div id="edit_blog_error_header" class="header"></div>
+                <p id="edit_blog_error_message"></p>
             </div>
-            <div class="field">
-                <label>Image</label>
-                <textarea name="image" rows="2"
-                    placeholder="Enter the url of your blog's title image here"><%= singleBlog.image %></textarea>
-            </div>
-            <div class=" field">
-                <label>Content</label>
-                <textarea name="body" placeholder="Enter your blog content here"><%= singleBlog.body %></textarea>
-            </div>
-            <button id="edit_blog_submit" class="ui button" type="submit">Done</button>
-        </form>
-        <div id="edit_blog_error" class="ui error message">
-            <div id="edit_blog_error_header" class="header"></div>
-            <p id="edit_blog_error_message"></p>
+            <form id="edit_blog_form" class="ui form">
+                <div class="field">
+                    <label>Blog's Title</label>
+                    <input id="edit_blog_title" type="text" name="title" placeholder="Enter your blog's title here"
+                        value="<%= singleBlog.title %>">
+                </div>
+                <div class="field">
+                    <label>Image</label>
+                    <textarea id="edit_blog_image" name="image" rows="2"
+                        placeholder="Enter the url of your blog's title image here"><%= singleBlog.image %></textarea>
+                </div>
+                <div class=" field">
+                    <label>Content</label>
+                    <textarea id="edit_blog_body" name="body"
+                        placeholder="Enter your blog content here"><%= singleBlog.body %></textarea>
+                </div>
+                <button id="edit_blog_submit" class="ui button" type="submit">Done</button>
+            </form>
         </div>
     </div>
 
