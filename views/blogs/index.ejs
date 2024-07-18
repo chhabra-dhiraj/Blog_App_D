@@ -1,6 +1,6 @@
 <%- include ("../layouts/header") %>
 
-    <div id="blogs_view" class="ui container segment">
+    <div id="blogs_view">
         <% blogs.forEach(function(blog) { %>
             <div class="ui raised card">
                 <a id="title" class="center aligned header" href="/blogs/<%= blog._id %>">
@@ -14,8 +14,8 @@
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOAWtdUwNKHvS0DdrmJNBKkojjqA-Dz6i126BmMUbd4SzE2B59">
                     Dhiraj Chhabra
                 </div>
-                <div class="image">
-                    <img src="<%= blog.image %>">
+                <div id="blog_image_div" class="image">
+                    <img id="blog_image" src="<%= blog.image %>">
                 </div>
                 <div class="extra content">
                     <div id="body" class="description">
@@ -31,7 +31,7 @@
                     3 comments
                 </div>
             </div>
-        <% }) %>
+            <% }) %>
     </div>
 
     <%- include ("../layouts/footer") %>

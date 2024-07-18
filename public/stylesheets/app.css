@@ -45,6 +45,19 @@ a {
     box-sizing: border-box;
 }
 
+#blog_image {
+    display: block;
+    max-width: 100%;
+    max-height: 600px;
+    margin: auto;
+    width: auto;
+    height: auto;
+}
+
+#blog_image_div {
+    text-align: center;
+}
+
 .ui.items>.item .avatar img,
 .ui.items>.item img.avatar {
     width: 60px;
