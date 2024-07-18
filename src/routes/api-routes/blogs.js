@@ -53,19 +53,23 @@ router.get("/:id", async function (req, res) {
 
 // Update api route
 router.put("/:id", async function (req, res) {
+    let error = routerHelpers.getError(req.body.title, req.body.image, req.body.body)
     const newBlog = {
         title: req.body.title,
         image: req.body.image,
         body: sanitizer.sanitize(req.body.body)
-    };
-
-    try {
-        const blog = await updateBlog(req.params.id, newBlog);
-        res.send(blog);
-    } catch (e) {
-        throw e;
     }
 
+    if (!error) {
+        try {
+            const blog = await updateBlog(req.params.id, newBlog);
+            res.status(200).send({ blog: blog });
+        } catch (e) {
+            throw e;
+        }
+    } else {
+        res.status(400).send({ error: error });
+    }
 });
 
 // Delete api route

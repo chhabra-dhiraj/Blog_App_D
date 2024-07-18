@@ -45,31 +45,4 @@ router.get("/:id/edit", async function (req, res) {
 
 });
 
-// Update page route
-router.put("/:id", async function (req, res) {
-    const newBlog = {
-        title: req.body.title,
-        image: req.body.image,
-        body: sanitizer.sanitize(req.body.body)
-    };
-
-    try {
-        const blog = await updateBlog(req.params.id, newBlog);
-        res.redirect("/blogs/" + req.params.id);
-    } catch (e) {
-        throw e;
-    }
-
-});
-
-// Delete page route
-router.delete("/:id", async function (req, res) {
-    try {
-        const blog = await deleteBlog(req.params.id);
-        res.redirect("/blogs");
-    } catch (e) {
-        throw e;
-    }
-});
-
 module.exports = router;

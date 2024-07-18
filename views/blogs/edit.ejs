@@ -1,7 +1,9 @@
 <%- include ("../layouts/header.ejs") %>
-
+    <script>
+        var blogId = '<%= singleBlog._id %>';           
+    </script>
     <div class="ui container">
-        <form id="blogs_view" class="ui form" action="/blogs/<%= singleBlog._id %>?_method=PUT" method="POST">
+        <form id="edit_blog_form" class="ui form">
             <div class="field">
                 <label>Blog's Title</label>
                 <input type="text" name="title" placeholder="Enter your blog's title here"
@@ -16,8 +18,12 @@
                 <label>Content</label>
                 <textarea name="body" placeholder="Enter your blog content here"><%= singleBlog.body %></textarea>
             </div>
-            <button class="ui button" type="submit">Done</button>
+            <button id="edit_blog_submit" class="ui button" type="submit">Done</button>
         </form>
+        <div id="edit_blog_error" class="ui error message">
+            <div id="edit_blog_error_header" class="header"></div>
+            <p id="edit_blog_error_message"></p>
+        </div>
     </div>
 
     <%- include ("../layouts/footer.ejs") %>
