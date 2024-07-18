@@ -1,17 +1,20 @@
-function getError(title, image, body) {
+async function getError(title, image, body) {
     let error
     if (!title || !image || !body) {
         error = { header: 'Incomplete fields!', message: 'Please fill all the fields to continue.' }
-    } else if (!validImageURL(image)) {
-        error = { header: 'Invalid Image URL', message: 'Please enter a valid image url to continue.' }
     } else {
-        undefined
+        const isValidUrl = await validImageURL(image)
+        if (!isValidUrl) {
+            error = { header: 'Invalid Image URL', message: 'Please enter a valid image url to continue.' }
+        } else {
+            undefined
+        }
     }
 
     return error;
 }
 
-function validImageURL(str) {
+async function validImageURL(url) {
     let pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
         '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
         '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
@@ -19,9 +22,13 @@ function validImageURL(str) {
         '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
         '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
 
-    let arr = ["jpeg", "jpg", "gif", "png"];
-    let ext = str.substring(str.lastIndexOf(".") + 1);
-    return !!pattern.test(str) && arr.includes(ext);
+    if (!!pattern.test(url)) {
+        return await fetch(url, { method: 'HEAD' }).then(res => {
+            return res.headers.get('Content-Type').startsWith('image')
+        })
+    } else {
+        return false
+    }
 }
 
 module.exports = { getError, validImageURL }

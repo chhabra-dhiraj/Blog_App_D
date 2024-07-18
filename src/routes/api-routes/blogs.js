@@ -21,7 +21,7 @@ router.get("/", async function (req, res) {
 
 // Create api route
 router.post("/", async function (req, res) {
-    let error = routerHelpers.getError(req.body.title, req.body.image, req.body.body)
+    let error = await routerHelpers.getError(req.body.title, req.body.image, req.body.body)
     const newBlog = {
         title: req.body.title,
         image: req.body.image,
@@ -53,7 +53,7 @@ router.get("/:id", async function (req, res) {
 
 // Update api route
 router.put("/:id", async function (req, res) {
-    let error = routerHelpers.getError(req.body.title, req.body.image, req.body.body)
+    let error = await routerHelpers.getError(req.body.title, req.body.image, req.body.body)
     const newBlog = {
         title: req.body.title,
         image: req.body.image,
