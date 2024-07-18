@@ -45,4 +45,4 @@ async function deleteBlog(blogId) {
     }
 }
 
-module.exports = {createBlog, readBlogs, readBlogById, updateBlog, deleteBlog};
+module.exports = { createBlog, readBlogs, readBlogById, updateBlog, deleteBlog };

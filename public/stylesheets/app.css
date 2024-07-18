@@ -12,6 +12,7 @@ a {
 
 #blogs_view {
     margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 #new_blog_error {
@@ -48,14 +49,10 @@ a {
 #blog_image {
     display: block;
     max-width: 100%;
-    max-height: 600px;
+    max-height: 400px;
     margin: auto;
     width: auto;
     height: auto;
-}
-
-#blog_image_div {
-    text-align: center;
 }
 
 .ui.items>.item .avatar img,
