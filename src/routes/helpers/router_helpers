@@ -1,13 +1,12 @@
 async function getError(title, image, body) {
-    let error
     if (!title || !image || !body) {
-        error = { header: 'Incomplete fields!', message: 'Please fill all the fields to continue.' }
+        var error = { header: 'Incomplete fields!', message: 'Please fill all the fields to continue.' }
     } else {
         const isValidUrl = await validImageURL(image)
         if (!isValidUrl) {
             error = { header: 'Invalid Image URL', message: 'Please enter a valid image url to continue.' }
         } else {
-            undefined
+            error = undefined
         }
     }
 
