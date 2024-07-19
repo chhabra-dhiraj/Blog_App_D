@@ -17,8 +17,6 @@
     </tr>
     <tr>
         <td><img src="/screenshots/7.png?raw=true"></td>
-        <td><img src="/screenshots/8.png?raw=true"></td>
-        <td><img src="/screenshots/9.png?raw=true"></td>
     </tr>
 </table>
 
