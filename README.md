@@ -32,7 +32,7 @@ npm install
 node src/app.js
 ```
 
-### Then, click ✨ [Demo](http://localhost:3000/)
+### When server starts, click ✨ [Demo](http://localhost:3000/) (Dev Port:3000)
 
 ## Author
 
