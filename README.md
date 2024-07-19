@@ -1,4 +1,4 @@
-# Welcome to blog_app_d 👋
+# Welcome to Blog_App_D 👋
 
 > A demo Blog Web App featuring a complex blogs UI built with Semantic UI, with the app structure following the MVC architecture pattern. Tech Stack: HTML, CSS & Javascript, Semantic UI, Node.js, Express.js, MongoDB.
 
@@ -6,17 +6,17 @@
 
 <table>
     <tr>
-        <td><img src="/screenshots/1.png"></td>
-        <td><img src="/screenshots/2.png?raw=true"></td>
-        <td><img src="/screenshots/3.png?raw=true"></td>
+        <td><img src="https://github.com/user-attachments/assets/986ade13-0868-4d50-a537-85b202408a35"></td>
+        <td><img src="https://github.com/user-attachments/assets/b69e5682-c61d-45d7-aff5-5caaf7fbb21f"></td>
+        <td><img src="https://github.com/user-attachments/assets/7ea063f3-cdc1-487d-8b84-7b1c02054eec"></td>
     </tr>
     <tr>
-        <td><img src="/screenshots/4.png?raw=true"></td>
-        <td><img src="/screenshots/5.png?raw=true"></td>
-        <td><img src="/screenshots/6.png?raw=true"></td>
+        <td><img src="https://github.com/user-attachments/assets/2d72722f-f1cb-49c8-8c3c-435ff1bfc680"></td>
+        <td><img src="https://github.com/user-attachments/assets/b8d0f244-7833-4402-b454-1a103ae23464"></td>
+        <td><img src="https://github.com/user-attachments/assets/de2e1bb9-6024-409a-8e24-5543a619c6b3"></td>
     </tr>
     <tr>
-        <td><img src="/screenshots/7.png?raw=true"></td>
+        <td><img src="https://github.com/user-attachments/assets/eaa7be0c-692a-4ce3-83a3-e15d90bb2941"></td>
     </tr>
 </table>
 
